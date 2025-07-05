@@ -6,147 +6,126 @@ import React, { useEffect, useRef, useState } from "react";
 
 const Navbar = ({ DarkMode, setDarkMode }) => {
   const sideMenuRef = useRef();
-  const openMenu = () => {
-    sideMenuRef.current.style.transform = "translateX(-16rem)";
-  };
-  const closeMenu = () => {
-    sideMenuRef.current.style.transform = "translateX(16rem)";
-  };
-
   const [isScroll, setisScroll] = useState(false);
 
+  const openMenu = () => {
+    sideMenuRef.current.style.transform = "translateX(0)";
+  };
+
+  const closeMenu = () => {
+    sideMenuRef.current.style.transform = "translateX(100%)";
+  };
+
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (scrollY > 50) {
-        setisScroll(true);
-      } else {
-        setisScroll(false);
-      }
-    });
+    const handleScroll = () => {
+      setisScroll(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav
-    className={`w-full flex items-center justify-between sticky px-5 ${
-      isScroll
-        ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm dark:bg-darkTheme dark:shadow-white/20"
-        : ""
-    }sticky top-0 z-50`}
-  >
-    <a href="#top">
-      <Image
-        src={DarkMode ? assets.logo_dark : assets.logo}
-        alt="img1"
-        className="w-28 cursor-pointer"
-      />
-    </a>
-  
-    {/* Center the ul properly */}
-    <div className="flex-1 flex justify-center">
-      <ul
-        className={`hidden md:flex items-center justify-center gap-4 lg:gap-6 xl:gap-8 rounded-full px-6 py-2 ${
-          isScroll
-            ? ""
-            : " bg-white shadow-sm bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent"
-        }`}
-      >
-        <li>
-          <a className="font-Ovo whitespace-nowrap" href="#top">
-            Home
-          </a>
-        </li>
-        <li>
-          <a className="font-Ovo whitespace-nowrap" href="#about">
-            About Me
-          </a>
-        </li>
-        <li>
-          <a className="font-Ovo whitespace-nowrap" href="#services">
-            Services
-          </a>
-        </li>
-        <li>
-          <Link className="font-Ovo whitespace-nowrap" href="#work">
-            Work
-          </Link>
-        </li>
-        <li>
-          <a className="font-Ovo whitespace-nowrap" href="#contact">
-            Contact Me
-          </a>
-        </li>
-      </ul>
-    </div>
-  
-    <div className="flex items-center gap-4">
-      <button onClick={() => setDarkMode((prev) => !prev)}>
+      className={`fixed top-0 z-50 w-full px-5 py-3 flex items-center justify-between transition-all duration-300 ${
+        isScroll
+          ? "bg-white/90 shadow-md backdrop-blur-md dark:bg-darkTheme"
+          : "bg-transparent"
+      }`}
+    >
+      <a href="#top">
         <Image
-          src={DarkMode ? assets.sun_icon : assets.moon_icon}
-          alt="img4"
-          className="w-6"
+          src={DarkMode ? assets.logo_dark : assets.logo}
+          alt="Logo"
+          className="w-28"
         />
-      </button>
-      <a
-        href="#contact"
-        className="hidden lg:flex items-center gap-3 px-8 py-2.7 border border-gray-500 rounded-full 
-              font-Ovo"
-      >
-        Contact <Image src={assets.arrow_icon} alt="img2" className="w-3" />
       </a>
-  
-      <button className="block md:hidden ml-3" onClick={openMenu}>
-        <Image
-          src={DarkMode ? assets.menu_white : assets.menu_black}
-          alt="img5"
-          className="w-6"
-        />
-      </button>
-    </div>
-  
-    {/* -------For Mobile Menu-------- */}
-  
-    <div>
-      <ul
+
+      <div className="flex-1 hidden md:flex justify-center">
+        <ul className="flex gap-6 text-sm font-Ovo dark:text-white">
+          <li>
+            <a href="#top">Home</a>
+          </li>
+          <li>
+            <a href="#skills">Skills</a>
+          </li>
+          <li>
+            <a href="#about">About Me</a>
+          </li>
+          <li>
+            <a href="#services">Services</a>
+          </li>
+          <li>
+            <a href="#work">Work</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <div className="flex items-center gap-4">
+        <button onClick={() => setDarkMode((prev) => !prev)}>
+          <Image
+            src={DarkMode ? assets.sun_icon : assets.moon_icon}
+            alt="Toggle Theme"
+            className="w-6"
+          />
+        </button>
+
+        <a
+          href="#contact"
+          className="hidden lg:flex items-center gap-2 px-6 py-2 rounded-full border border-gray-500 font-Ovo text-sm hover:shadow-md transition dark:text-white dark:border-white"
+        >
+          Contact
+          <Image
+            src={assets.arrow_icon}
+            alt="Arrow Icon"
+            className="w-4 h-4 object-contain"
+          />
+        </a>
+
+        <button className="md:hidden" onClick={openMenu}>
+          <Image
+            src={DarkMode ? assets.menu_white : assets.menu_black}
+            alt="Menu"
+            className="w-6"
+          />
+        </button>
+      </div>
+
+      {/* Mobile Sidebar */}
+      <div
         ref={sideMenuRef}
-        className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500 dark:bg-darkHover dark:text-white"
+        className="fixed top-0 right-0 w-64 h-screen z-[100] bg-white dark:bg-darkHover text-black dark:text-white flex flex-col gap-6 p-8 transition-transform duration-500 transform translate-x-full"
       >
-        <div className="absolute right-6 top-6" onClick={closeMenu}>
+        <button className="self-end" onClick={closeMenu}>
           <Image
             src={DarkMode ? assets.close_white : assets.close_black}
-            alt="img6"
-            className="w-5 cursor-pointer"
+            alt="Close"
+            className="w-5"
           />
-        </div>
-  
-        <li>
-          <a className="font-Ovo" onClick={closeMenu} href="#about">
-            About me
-          </a>
-        </li>
-        <li>
-          <a className="font-Ovo" onClick={closeMenu} href="#top">
-            Home
-          </a>
-        </li>
-        <li>
-          <a className="font-Ovo" onClick={closeMenu} href="#services">
-            Services
-          </a>
-        </li>
-        <li>
-          <a className="font-Ovo" onClick={closeMenu} href="#work">
-            Work
-          </a>
-        </li>
-        <li>
-          <a className="font-Ovo" onClick={closeMenu} href="#contact">
-            Contact Me
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  
+        </button>
+
+        <a href="#top" onClick={closeMenu} className="font-Ovo">
+          Home
+        </a>
+        <a href="#skills" onClick={closeMenu} className="font-Ovo">
+          Skills
+        </a>
+        <a href="#about" onClick={closeMenu} className="font-Ovo">
+          About Me
+        </a>
+        <a href="#services" onClick={closeMenu} className="font-Ovo">
+          Services
+        </a>
+        <a href="#work" onClick={closeMenu} className="font-Ovo">
+          Work
+        </a>
+        <a href="#contact" onClick={closeMenu} className="font-Ovo">
+          Contact
+        </a>
+      </div>
+    </nav>
   );
 };
 

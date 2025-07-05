@@ -36,6 +36,14 @@ import send_icon from './send-icon.png';
 import right_arrow_bold from './right-arrow-bold.png';
 import right_arrow_bold_dark from './right-arrow-bold-dark.png';
 import Link from 'next/link';
+import nextjs_icon from "./nextjs_icon.png";
+import nodejs_icon from "./nodejs_icon.png";
+import expressjs_icon from "./expressjs_icon.png";
+import tailwindcss_icon from "./tailwindcss_icon.png";
+import js_icon from "./js_icon.png";
+import github_icon from "./github_icon.png";
+import dsa_icon from "./dsa_icon.png";
+import dsa_icon_dark from "./dsa_icon_dark.png";
 
 export const assets = {
     user_image,
@@ -74,32 +82,49 @@ export const assets = {
     right_arrow,
     send_icon,
     right_arrow_bold,
-    right_arrow_bold_dark
+    right_arrow_bold_dark,
+    nextjs_icon,
+    nodejs_icon,
+    tailwindcss_icon,
+    js_icon,
+    expressjs_icon,
+    github_icon,
+    dsa_icon,
+    dsa_icon_dark
+
 };
 
 export const workData = [
-    {
-        title: 'Frontend project',
-        description: 'Web Design',
-        // Link: 'https://github.com/soumodeepRoy853/BlogSide.git',
-        bgImage: '/work-1.png',
-    },
-    {
-        title: 'Backend project',
-        description: 'Voting App',
-        bgImage: '/work-2.png',
-    },
-    {
-        title: 'Fullstack project',
-        description: 'FundaMentalEureka',
-        bgImage: '/work-3.png',
-    },
-    {
-        title: 'Portfolio project ',
-        description: 'Portfolio with NextJs',
-        bgImage: '/work-4.png',
-    },
-]
+  {
+    title: 'Portfolio - NextJs',
+    description: 'Responsive UI with NextJS and TailwindCSS',
+    live: 'https://soumodeep.vercel.app/',
+    github: 'https://github.com/soumodeepRoy853/portfolio',
+    bgImage: '/work-1.png',
+  },
+  {
+    title: 'AI Agent',
+    description: 'Real time chat with AI - MERN Stack',
+    //live: 'https://ai-agent-soumodeep.vercel.app/',
+    github: 'https://github.com/soumodeepRoy853/VotingApp.git',
+    bgImage: '/work-2.png',
+  },
+  {
+    title: 'DevConnect',
+    description: 'Developer Social Network - MERN Stack',
+    //live: 'https://devconnect-soumodeep.vercel.app/', 
+    github: 'https://github.com/soumodeepRoy853/DevConnect.git',
+    bgImage: '/work-3.png',
+  },
+  {
+    title: 'Voting App',
+    description: 'Build a Voting app for Backend - Node.js, Express.js',
+    //live: '',
+    github: 'https://github.com/soumodeepRoy853/VotingApp.git',
+    bgImage: '/work-4.png',
+  },
+];
+
 
 export const serviceData = [
     { icon: assets.web_icon, title: 'Frontend project', description: 'Web development is the process of building, programming...', link: 'https://github.com/soumodeepRoy853/BlogSide.git' },
@@ -109,11 +134,21 @@ export const serviceData = [
 ]
 
 export const infoList = [
-    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML, CSS, JavaScript, TypeScript, C++' },
+    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML5, CSS3, JavaScript ES6, TypeScript, C++' },
     { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'B.Tech in Information Technology' },
-    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 5 projects' }
+    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 5 projects' },
+ {
+  icon: assets.dsa_icon, // Use a brain, code, or algorithm icon
+  iconDark: assets.dsa_icon_dark,
+  title: 'Problem Solving',
+  description: 'Solved 300+ DSA problems on LeetCode and GeeksforGeeks',
+}
+
+,
 ];
 
 export const toolsData = [
-    assets.vscode, assets.firebase, assets.mongodb, assets.figma, assets.git
+    assets.vscode, assets.firebase, assets.mongodb, assets.figma, assets.git, assets.expressjs_icon, assets.tailwindcss_icon, assets.nextjs_icon, assets.nodejs_icon
 ];
+
+

@@ -1,62 +1,76 @@
-import {assets, serviceData} from '@/assets/assets';
-import Image from 'next/image';
+'use client';
 import React from 'react';
-import { motion } from "motion/react"
-import Link from 'next/link';
+import { motion } from 'motion/react';
+import { assets } from '@/assets/assets';
+
+const services = [
+  {
+    title: 'Frontend Development',
+    description: 'Crafting visually appealing, responsive, and accessible UI using React, Tailwind, and Next.js.',
+    icon: assets.frontend_icon || '🖥️',
+  },
+  {
+    title: 'Backend Development',
+    description: 'Building robust REST APIs and business logic with Node.js, Express, and MongoDB.',
+    icon: assets.backend_icon || '🛠️',
+  },
+  {
+    title: 'Full-Stack Projects',
+    description: 'End-to-end application development including auth, dashboard, chat, real-time systems, etc.',
+    icon: assets.fullstack_icon || '🚀',
+  },
+];
 
 const Services = () => {
   return (
-    <div>
-      <motion.div
-      initial={{opacity:0}}
-      whileInView={{opacity:1}}
-      transition={{duration:1}}
-       id='services' className='w-full px-[12%] py-10 scroll-mt-20'>
-
+    <motion.section
+      id="services"
+      className="w-full px-6 sm:px-[10%] py-20 scroll-mt-20 bg-white dark:bg-darkTheme text-black dark:text-white"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
       <motion.h4
-      initial={{opacity:0, y:-20}}
-      whileInView={{opacity:1, y:0}}
-      transition={{duration:0.5, delay:0.3}}
-       className='text-center mb-2 text-lg font-Ovo'>What I offer</motion.h4>
+        className="text-center text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 mb-2"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
+        What I Do
+      </motion.h4>
 
       <motion.h2
-       initial={{opacity:0, y:-20}}
-       whileInView={{opacity:1, y:0}}
-       transition={{duration:0.5, delay:0.5}} 
-      className='text-center text-5xl font-Ovo'>My Services</motion.h2>
+        className="text-center text-4xl sm:text-5xl font-extrabold font-serif mb-16"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        Services I Offer
+      </motion.h2>
 
-      <motion.p
-       initial={{opacity:0}}
-       whileInView={{opacity:1}}
-       transition={{duration:0.5, delay:0.7}}
-       className='text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo'>
-        I offer a range of services including Frontend and Backend development, FullStack solutions, and Portfolio creation. 
-        With expertise in modern technologies like the MERN stack and Next.js, I deliver high-quality, scalable web applications 
-        tailored to your needs. Whether you're looking for a complete web solution or just need to showcase your work, 
-        I can help bring your vision to life.
-      </motion.p>
-
-      <motion.div
-        initial={{opacity:0}}
-        whileInView={{opacity:1}}
-        transition={{duration:0.6, delay:0.9}} 
-       className='grid grid-cols-auto gap-6 my-10'>
-        {serviceData.map(({icon, title, description, link}, index)=>(
-            <motion.div
-            whileHover={{scale:1.05}}
-             key={index}
-            className='border border-gray-400 rounded-lg px-8 py-12 hover:shadow-black cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 dark:hover:bg-darkHover dark:hover:shadow-white'>
-                <Image src={icon} alt='img10' className='w-10' />
-                <h3 className='text-lg text-gray-700 my-4 dark:text-white'>{title}</h3>
-                <p className='text-sm text-gray-600 leading-5 dark:text-white/80'>{description}</p>
-                <Link href={link} className='flex items-center gap-2 text-sm mt-5'>Read more <Image src={assets.right_arrow} alt='img11' className='w-4' /></Link>
-            <div/>
-            </motion.div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {services.map((service, index) => (
+          <motion.div
+            key={index}
+            className="p-6 rounded-xl bg-gray-100 dark:bg-white/5 shadow-md dark:shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+          >
+            <div className="flex justify-center items-center mb-5">
+              <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900 text-2xl rounded-full flex items-center justify-center text-blue-600 dark:text-white shadow-lg">
+                {typeof service.icon === 'string' ? service.icon : <img src={service.icon.src} alt="" className="w-8 h-8" />}
+              </div>
+            </div>
+            <h3 className="text-xl font-bold text-center mb-2">{service.title}</h3>
+            <p className="text-center text-gray-700 dark:text-gray-300 text-base leading-relaxed">
+              {service.description}
+            </p>
+          </motion.div>
         ))}
-      </motion.div>
-      </motion.div>
-    </div>
-  )
-}
+      </div>
+    </motion.section>
+  );
+};
 
 export default Services;

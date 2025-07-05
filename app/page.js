@@ -8,6 +8,8 @@ import Work from "./components/Work";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
+import Experience from "./components/Experience";
+import SkillStars from "./components/Skills";
 
 export default function Home() {
   const [DarkMode, setDarkMode] = useState(false); // Use boolean for easier comparison
@@ -38,7 +40,9 @@ export default function Home() {
     <div>
       <Navbar DarkMode={DarkMode} setDarkMode={setDarkMode} />
       <Header DarkMode={DarkMode} />
+      <SkillStars DarkMode={DarkMode}/>
       <About DarkMode={DarkMode} />
+      <Experience DarkMode={DarkMode}/>
       <Services DarkMode={DarkMode} />
       <Work DarkMode={DarkMode} />
       <Contact DarkMode={DarkMode} />

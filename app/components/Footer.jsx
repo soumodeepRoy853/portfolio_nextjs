@@ -17,6 +17,7 @@ const Footer = ({ DarkMode }) => {
             src={DarkMode ? assets.logo_dark : assets.logo}
             alt="Footer Logo"
             className="w-36 mb-1"
+            priority
           />
           <div className="flex items-center gap-2 text-gray-700 dark:text-white text-sm sm:text-base font-medium">
             <Image

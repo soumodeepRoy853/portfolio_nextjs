@@ -44,6 +44,7 @@ import js_icon from "./js_icon.png";
 import github_icon from "./github_icon.png";
 import dsa_icon from "./dsa_icon.png";
 import dsa_icon_dark from "./dsa_icon_dark.png";
+// import portfolio_img from "./portfolio-img.png"
 
 export const assets = {
     user_image,
@@ -100,7 +101,7 @@ export const workData = [
     description: 'Responsive UI with NextJS and TailwindCSS',
     live: 'https://soumodeep.vercel.app/',
     github: 'https://github.com/soumodeepRoy853/portfolio',
-    bgImage: '/work-1.png',
+    bgImage: "/work-1.png"
   },
   {
     title: 'AI Agent',
@@ -136,12 +137,12 @@ export const serviceData = [
 export const infoList = [
     { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML5, CSS3, JavaScript ES6, TypeScript, C++' },
     { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'B.Tech in Information Technology' },
-    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 5 projects' },
+    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 10 projects' },
  {
   icon: assets.dsa_icon, // Use a brain, code, or algorithm icon
   iconDark: assets.dsa_icon_dark,
   title: 'Problem Solving',
-  description: 'Solved 300+ DSA problems on LeetCode and GeeksforGeeks',
+  description: 'Solved 150+ DSA problems on LeetCode and GeeksforGeeks',
 }
 
 ,

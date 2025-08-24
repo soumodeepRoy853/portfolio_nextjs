@@ -37,6 +37,7 @@ const Navbar = ({ DarkMode, setDarkMode }) => {
           src={DarkMode ? assets.logo_dark : assets.logo}
           alt="Logo"
           className="w-28"
+          priority
         />
       </a>
 

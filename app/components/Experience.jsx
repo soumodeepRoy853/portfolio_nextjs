@@ -1,21 +1,21 @@
 'use client';
 import React from 'react';
 import { motion } from 'motion/react';
-import { assets } from '@/assets/assets'; // Optional: for using icon images
+import { assets } from '@/assets/assets'; 
 
 const experiences = [
+{
+  role: 'Associate Software Engineer',
+  company: 'KOADAI DIGIHUB',
+  duration: 'Aug 2025 – Present',
+  description: 'Developing scalable web applications using the MERN stack; implemented user authentication, REST APIs, and database integrations. Enhanced application performance and collaborated with the team to design reusable frontend components, improving development speed by 20%.',
+  icon: '💻',
+},
   {
     role: 'Full Stack Developer Intern',
     company: 'Learnstrick Edutech',
-    duration: 'Jan 2024 – Mar 2024',
+    duration: 'Mar 2024 – Apr 2024',
     description: 'Built a blog platform using the MERN stack with user auth, markdown editing, and comment features.',
-    icon: '💻',
-  },
-  {
-    role: 'Full Stack Developer Intern',
-    company: 'Bharat Intern',
-    duration: 'Oct 2023 – Dec 2023',
-    description: 'Created a Money Tracker and a Registration System using React, Node.js, MongoDB, and Express.',
     icon: '🧾',
   },
   {
